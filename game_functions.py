@@ -12,7 +12,7 @@ from button import Button
 from game_stats import GameStats
 from scoreboard import Scoreboard
 
-def check_keydown_events(event,ai_settings,screen,stats,ship,aliens,bullets):
+def check_keydown_events(event,ai_settings,screen,stats,sb,ship,aliens,bullets):
     """响应按键"""
     if event.key == pygame.K_RIGHT:
         ship.moving_right = True
@@ -24,7 +24,7 @@ def check_keydown_events(event,ai_settings,screen,stats,ship,aliens,bullets):
         update_high_score(stats)
         sys.exit()
     elif event.key == pygame.K_p and not stats.game_active:
-        start_game(ai_settings,screen,stats,ship,aliens,bullets)
+        start_game(ai_settings,screen,stats,sb,ship,aliens,bullets)
 
 
 def check_keyup_events(event,ship):
@@ -42,7 +42,7 @@ def check_events(ai_settings,screen,stats,sb,play_button,ship,aliens,bullets):
             update_high_score(stats)
             sys.exit()
         elif event.type == pygame.KEYDOWN:
-            check_keydown_events(event,ai_settings,screen,stats,ship,aliens,bullets)
+            check_keydown_events(event,ai_settings,screen,stats,sb,ship,aliens,bullets)
         elif event.type == pygame.KEYUP:
             check_keyup_events(event,ship)
         elif event.type == pygame.MOUSEBUTTONDOWN:
